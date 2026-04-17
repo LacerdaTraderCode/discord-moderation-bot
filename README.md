@@ -1,203 +1,146 @@
-# 🎯 Portfolio — Wagner Lacerda
+# 🤖 Discord Moderation Bot
 
-<div align="center">
+[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Discord.py](https://img.shields.io/badge/discord.py-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discordpy.readthedocs.io/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Perfil_Profissional-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/wagner-lacerda-da-silva-958b9481)
-[![GitHub](https://img.shields.io/badge/GitHub-Portfolio-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/LacerdaTraderCode)
-[![Email](https://img.shields.io/badge/Email-Contato-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:lacerdatradercode@outlook.com)
-
-</div>
+Bot de moderação para servidores Discord com comandos modernos **slash commands**, sistema de warns persistente em SQLite, filtros de spam e comandos utilitários. Construído com `discord.py` e arquitetura assíncrona.
 
 ---
 
-## 👋 Sobre
+## 📋 Funcionalidades
 
-**Analista de Infraestrutura & Desenvolvedor Python** com mais de 12 anos de experiência em TI, incluindo 9 anos na **John Deere** (Montenegro-RS) em ambiente de manufatura de missão crítica. Nos últimos 3 anos, atuo como desenvolvedor Python autônomo construindo APIs, bots, scrapers e pipelines de dados.
+### 🛡️ Moderação
+- ✅ `/kick` — Expulsa membro
+- ✅ `/ban` — Bane membro
+- ✅ `/warn` — Aplica advertência (persistente)
+- ✅ `/warnings` — Lista advertências de um usuário
+- ✅ `/clear` — Limpa mensagens em massa
+- ✅ `/mute` — Silencia temporariamente
 
-📍 **Rio Grande do Sul, Brasil** · 🏠 **Disponível para home office**
+### 🔧 Utilitários
+- ✅ `/ping` — Latência do bot
+- ✅ `/userinfo` — Informações de um usuário
+- ✅ `/serverinfo` — Informações do servidor
+- ✅ `/avatar` — Mostra avatar em alta resolução
 
----
-
-## 🚀 Projetos em Destaque
-
-Este repositório é um **índice navegável** dos meus principais projetos públicos. Cada card abaixo leva a um repositório completo com código, documentação e instruções de uso.
-
----
-
-### 1. 🔧 [FastAPI REST Boilerplate](https://github.com/LacerdaTraderCode/fastapi-rest-boilerplate)
-
-Template profissional de API REST com autenticação JWT, CRUD completo e SQLAlchemy.
-
-**Stack:** `FastAPI` · `SQLAlchemy` · `JWT` · `Pydantic` · `SQLite/PostgreSQL`
-
-**Destaques:**
-- Autenticação JWT pronta para produção
-- Estrutura modular escalável
-- Documentação Swagger automática
-- CORS configurado
+### 🎯 Automação
+- ✅ Auto-detecção de spam (mensagens repetidas)
+- ✅ Log automático em canal configurado
+- ✅ Mensagem de boas-vindas para novos membros
 
 ---
 
-### 2. 🤖 [Telegram Crypto Alert Bot](https://github.com/LacerdaTraderCode/telegram-crypto-alert-bot)
+## 🛠️ Tecnologias
 
-Bot Telegram que monitora preços de criptomoedas em tempo real e envia alertas configurados.
-
-**Stack:** `python-telegram-bot` · `aiohttp` · `SQLAlchemy` · `Binance API` · `asyncio`
-
-**Destaques:**
-- Arquitetura 100% assíncrona
-- Sistema de alertas persistente
-- Monitor em background
-- Integração com API pública Binance
+- **discord.py 2.x** — Framework oficial
+- **SQLAlchemy** — Persistência de warns
+- **asyncio** — Assíncrono nativo
+- **python-dotenv** — Configurações
 
 ---
 
-### 3. 🕷️ [Web Scraper Toolkit](https://github.com/LacerdaTraderCode/web-scraper-toolkit)
+## 📁 Estrutura
 
-Kit completo de web scraping com 3 abordagens diferentes: BeautifulSoup, Selenium e Playwright.
-
-**Stack:** `BeautifulSoup` · `Selenium` · `Playwright` · `Polars` · `Parquet`
-
-**Destaques:**
-- Comparação prática entre 3 tecnologias
-- Rate limiting e retry automático
-- Exportação CSV/JSON/Parquet
-- Exemplos prontos para rodar
-
----
-
-### 4. 📊 [Data Pipeline Polars & DuckDB](https://github.com/LacerdaTraderCode/data-pipeline-polars-duckdb)
-
-Pipeline ETL moderno usando as ferramentas mais performáticas do ecossistema de dados Python em 2026.
-
-**Stack:** `Polars` · `DuckDB` · `Parquet` · `PyArrow`
-
-**Destaques:**
-- 10-100x mais rápido que Pandas
-- Queries SQL direto em arquivos Parquet
-- Particionamento de datasets
-- Benchmark incluído
+```
+discord-moderation-bot/
+├── bot/
+│   ├── __init__.py
+│   ├── main.py              # Ponto de entrada
+│   ├── database.py          # Persistência de warns
+│   └── cogs/
+│       ├── moderation.py    # Comandos de moderação
+│       ├── utility.py       # Comandos utilitários
+│       └── events.py        # Handlers de eventos
+├── requirements.txt
+├── .env.example
+├── .gitignore
+└── README.md
+```
 
 ---
 
-### 5. ⚙️ [Python Automation Scripts](https://github.com/LacerdaTraderCode/python-automation-scripts)
+## ⚙️ Instalação
 
-Coleção de 8 scripts prontos para automatizar tarefas comuns de TI.
+### 1. Criar bot no Discord
 
-**Stack:** `pathlib` · `openpyxl` · `psutil` · `smtplib` · `hashlib`
+1. Acesse [Discord Developer Portal](https://discord.com/developers/applications)
+2. Crie uma nova aplicação → Bot → copie o **Token**
+3. Em "OAuth2 > URL Generator":
+   - Scopes: `bot`, `applications.commands`
+   - Permissions: `Administrator` (ou específicas)
+4. Use a URL gerada para adicionar o bot ao seu servidor
 
-**Scripts inclusos:**
-- Organizador de arquivos por tipo
-- Renomeação em lote com regex
-- Backup compactado com timestamp
-- Combinador de planilhas Excel
-- Envio de e-mails em massa
-- Monitor de sistema (CPU/RAM/Disco)
-- Detector de arquivos duplicados
-- Analisador de logs
+### 2. Rodar localmente
 
----
+```bash
+git clone https://github.com/LacerdaTraderCode/discord-moderation-bot.git
+cd discord-moderation-bot
 
-### 6. 📈 [Streamlit Finance Dashboard](https://github.com/LacerdaTraderCode/streamlit-finance-dashboard)
+python -m venv venv
+source venv/bin/activate
 
-Dashboard interativo de análise financeira com indicadores técnicos e gráficos profissionais.
+pip install -r requirements.txt
 
-**Stack:** `Streamlit` · `Plotly` · `yfinance` · `Pandas`
+cp .env.example .env
+# Edite .env com seu DISCORD_TOKEN
 
-**Destaques:**
-- Candlestick interativo
-- Indicadores técnicos (SMA, EMA, RSI, MACD, Bollinger)
-- Suporte a ações, cripto, índices e forex
-- Pronto para deploy em Streamlit Cloud
+python -m bot.main
+```
 
 ---
 
-### 7. 🤖 [Discord Moderation Bot](https://github.com/LacerdaTraderCode/discord-moderation-bot)
+## 💬 Uso
 
-Bot Discord moderno com slash commands, moderação completa e anti-spam.
+Após o bot estar online no servidor, digite `/` em qualquer canal para ver os comandos disponíveis.
 
-**Stack:** `discord.py 2.x` · `SQLAlchemy` · `asyncio`
+### Exemplos
 
-**Destaques:**
-- Slash commands nativos
-- Sistema de warns persistente
-- Anti-spam automático
-- Arquitetura em cogs
+```
+/warn @usuario Ofensa ao servidor
+→ ⚠️ @usuario advertido. Motivo: Ofensa ao servidor (warn #1)
 
----
+/warnings @usuario
+→ @usuario possui 1 advertência:
+  #1 - Ofensa ao servidor (há 2 minutos)
 
-## 🛠️ Stack Técnica
+/clear 50
+→ 🗑️ 50 mensagens removidas.
 
-### Backend & APIs
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=flat-square&logo=fastapi)
-![Flask](https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask)
-![Django](https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django)
-
-### Dados & ETL
-![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas)
-![Polars](https://img.shields.io/badge/Polars-CD792C?style=flat-square&logo=polars)
-![DuckDB](https://img.shields.io/badge/DuckDB-FFF000?style=flat-square&logo=duckdb&logoColor=black)
-![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy)
-
-### Automação & Scraping
-![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=flat-square&logo=selenium&logoColor=white)
-![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=flat-square&logo=playwright&logoColor=white)
-
-### Banco de Dados
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
-![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite)
-
-### DevOps & Ferramentas
-![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
-![Windows](https://img.shields.io/badge/Windows-0078D6?style=flat-square&logo=windows&logoColor=white)
-
-### Sistemas Corporativos
-![SAP](https://img.shields.io/badge/SAP-0FAAFF?style=flat-square&logo=sap&logoColor=white)
-![ServiceNow](https://img.shields.io/badge/ServiceNow-00C487?style=flat-square)
-![Jira](https://img.shields.io/badge/Jira-0052CC?style=flat-square&logo=jira&logoColor=white)
+/userinfo @usuario
+→ [embed com avatar, data de ingresso, roles, etc.]
+```
 
 ---
 
-## 💼 Experiência Profissional
+## 🔐 Permissões Necessárias
 
-| Período | Cargo | Empresa |
-|---------|-------|---------|
-| 2023 - Atual | Desenvolvedor Python Autônomo & Trader | Independente |
-| 2021 - 2022 | Analista de Infraestrutura | John Deere Brasil |
-| 2017 - 2021 | Técnico de Suporte N2 / Líder Técnico | Cognizant (cliente: John Deere) |
-| 2013 - 2017 | Analista de Suporte N2 / Líder Técnico | Stefanini IT Solutions (cliente: John Deere) |
-| 2007 - 2013 | Auxiliar de Informática e Telefonia | Comando da Aeronáutica |
-
----
-
-## 🎓 Formação
-
-- **Análise e Desenvolvimento de Sistemas** — UNIFAEL *(em andamento, TCC em fase final)*
-- **Técnico em Informática** — IPUC *(concluído em 2014)*
-- **Eletricista de Manutenção com ênfase em Automação Industrial** — SENAI *(concluído em 2006)*
+O bot precisa destas permissões no servidor:
+- Ler mensagens
+- Enviar mensagens
+- Gerenciar mensagens (para `/clear`)
+- Expulsar membros (para `/kick`)
+- Banir membros (para `/ban`)
+- Moderar membros (para `/mute`)
 
 ---
 
-## 📫 Como Posso Ajudar?
+## 🚀 Deploy 24/7
 
-Estou disponível para:
-
-- 💼 **Vagas CLT remoto/híbrido** em Python, Suporte ou Infraestrutura
-- 🛠️ **Projetos freelance** de automação, APIs, bots e scraping
-- 🤝 **Consultoria técnica** em trading automatizado e pipelines de dados
-
-📩 **Contato:** [lacerdatradercode@outlook.com](mailto:lacerdatradercode@outlook.com)
+- **Railway** ou **Render** (planos free)
+- **Raspberry Pi** (ideal para uso pessoal)
+- **VPS** (DigitalOcean, Contabo, Linode)
 
 ---
 
-<div align="center">
+## 👨‍💻 Autor
 
-⭐ **Se algum projeto te ajudou, deixe uma estrela!** ⭐
+**Wagner Lacerda**  
+🔗 [LinkedIn](https://www.linkedin.com/in/wagner-lacerda-da-silva-958b9481)  
+🐙 [GitHub](https://github.com/LacerdaTraderCode)  
 
-*Feito com Python, café e muita dedicação.*
+---
 
-</div>
+## 📄 Licença
+
+MIT License
