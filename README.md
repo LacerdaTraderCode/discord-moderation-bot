@@ -1,30 +1,40 @@
+<div align="center">
+
 # 🤖 Discord Moderation Bot
 
-[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![Discord.py](https://img.shields.io/badge/discord.py-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discordpy.readthedocs.io/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
+**Bot de moderação para servidores Discord com slash commands e warns persistentes**
 
-Bot de moderação para servidores Discord com comandos modernos **slash commands**, sistema de warns persistente em SQLite, filtros de spam e comandos utilitários. Construído com `discord.py` e arquitetura assíncrona.
+[![Python](https://img.shields.io/badge/Python-3.11%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![discord.py](https://img.shields.io/badge/discord.py-5865F2?logo=discord&logoColor=white)](https://discordpy.readthedocs.io/)
+[![SQLite](https://img.shields.io/badge/SQLite-003B57?logo=sqlite&logoColor=white)](https://www.sqlite.org/)
+[![Licença](https://img.shields.io/badge/Licen%C3%A7a-MIT-orange)](https://github.com/LacerdaTraderCode/discord-moderation-bot/blob/main/LICENSE)
+[![GitHub](https://img.shields.io/badge/GitHub-LacerdaTraderCode-181717?logo=github)](https://github.com/LacerdaTraderCode/discord-moderation-bot)
+
+</div>
 
 ---
 
-## 📋 Funcionalidades
+## 📌 Sobre o projeto
 
-### 🛡️ Moderação
+Bot de moderação para servidores Discord com **slash commands** modernos, sistema de warns persistente em SQLite, filtros de spam e comandos utilitários. Construído com `discord.py 2.x` e arquitetura totalmente assíncrona.
+
+### Funcionalidades
+
+#### 🛡️ Moderação
 - ✅ `/kick` — Expulsa membro
 - ✅ `/ban` — Bane membro
-- ✅ `/warn` — Aplica advertência (persistente)
+- ✅ `/warn` — Aplica advertência (persistente em banco)
 - ✅ `/warnings` — Lista advertências de um usuário
 - ✅ `/clear` — Limpa mensagens em massa
 - ✅ `/mute` — Silencia temporariamente
 
-### 🔧 Utilitários
+#### 🔧 Utilitários
 - ✅ `/ping` — Latência do bot
-- ✅ `/userinfo` — Informações de um usuário
-- ✅ `/serverinfo` — Informações do servidor
+- ✅ `/userinfo` — Informações detalhadas de um usuário
+- ✅ `/serverinfo` — Estatísticas do servidor
 - ✅ `/avatar` — Mostra avatar em alta resolução
 
-### 🎯 Automação
+#### 🎯 Automação
 - ✅ Auto-detecção de spam (mensagens repetidas)
 - ✅ Log automático em canal configurado
 - ✅ Mensagem de boas-vindas para novos membros
@@ -33,10 +43,10 @@ Bot de moderação para servidores Discord com comandos modernos **slash command
 
 ## 🛠️ Tecnologias
 
-- **discord.py 2.x** — Framework oficial
+- **discord.py 2.x** — Framework oficial com suporte a slash commands
 - **SQLAlchemy** — Persistência de warns
-- **asyncio** — Assíncrono nativo
-- **python-dotenv** — Configurações
+- **asyncio** — Arquitetura assíncrona nativa
+- **python-dotenv** — Configuração via variáveis de ambiente
 
 ---
 
@@ -45,7 +55,6 @@ Bot de moderação para servidores Discord com comandos modernos **slash command
 ```
 discord-moderation-bot/
 ├── bot/
-│   ├── __init__.py
 │   ├── main.py              # Ponto de entrada
 │   ├── database.py          # Persistência de warns
 │   └── cogs/
@@ -54,22 +63,19 @@ discord-moderation-bot/
 │       └── events.py        # Handlers de eventos
 ├── requirements.txt
 ├── .env.example
-├── .gitignore
 └── README.md
 ```
 
 ---
 
-## ⚙️ Instalação
+## 📦 Instalação
 
-### 1. Criar bot no Discord
+### 1. Criar o bot no Discord Developer Portal
 
-1. Acesse [Discord Developer Portal](https://discord.com/developers/applications)
-2. Crie uma nova aplicação → Bot → copie o **Token**
-3. Em "OAuth2 > URL Generator":
-   - Scopes: `bot`, `applications.commands`
-   - Permissions: `Administrator` (ou específicas)
-4. Use a URL gerada para adicionar o bot ao seu servidor
+1. Acesse [discord.com/developers/applications](https://discord.com/developers/applications)
+2. Crie nova aplicação → Bot → copie o **Token**
+3. Em **OAuth2 > URL Generator**: scopes `bot` + `applications.commands`, permissão `Administrator`
+4. Use a URL gerada para adicionar o bot ao servidor
 
 ### 2. Rodar localmente
 
@@ -78,23 +84,20 @@ git clone https://github.com/LacerdaTraderCode/discord-moderation-bot.git
 cd discord-moderation-bot
 
 python -m venv venv
-source venv/bin/activate
+source venv/bin/activate      # Linux/Mac
+# venv\Scripts\activate       # Windows
 
 pip install -r requirements.txt
 
 cp .env.example .env
-# Edite .env com seu DISCORD_TOKEN
+# Edite .env e preencha DISCORD_TOKEN
 
 python -m bot.main
 ```
 
 ---
 
-## 💬 Uso
-
-Após o bot estar online no servidor, digite `/` em qualquer canal para ver os comandos disponíveis.
-
-### Exemplos
+## 💬 Exemplos de uso
 
 ```
 /warn @usuario Ofensa ao servidor
@@ -106,41 +109,52 @@ Após o bot estar online no servidor, digite `/` em qualquer canal para ver os c
 
 /clear 50
 → 🗑️ 50 mensagens removidas.
-
-/userinfo @usuario
-→ [embed com avatar, data de ingresso, roles, etc.]
 ```
 
 ---
 
-## 🔐 Permissões Necessárias
+## 🔐 Permissões necessárias
 
-O bot precisa destas permissões no servidor:
-- Ler mensagens
-- Enviar mensagens
+- Ler e enviar mensagens
 - Gerenciar mensagens (para `/clear`)
-- Expulsar membros (para `/kick`)
-- Banir membros (para `/ban`)
+- Expulsar e banir membros
 - Moderar membros (para `/mute`)
 
 ---
 
 ## 🚀 Deploy 24/7
 
-- **Railway** ou **Render** (planos free)
-- **Raspberry Pi** (ideal para uso pessoal)
-- **VPS** (DigitalOcean, Contabo, Linode)
+- **Railway** ou **Render** — planos gratuitos disponíveis
+- **VPS** — DigitalOcean, Contabo, Linode
+- **Raspberry Pi** — ideal para uso pessoal
 
 ---
 
-## 👨‍💻 Autor
+## ✅ Requisitos
 
-**Wagner Lacerda**  
-🔗 [LinkedIn](https://www.linkedin.com/in/wagner-lacerda-da-silva-958b9481)  
-🐙 [GitHub](https://github.com/LacerdaTraderCode)  
+- Python **3.11** ou superior
+- Token de bot do Discord
+
+---
+
+## 👤 Autor
+
+<div align="center">
+
+**Wagner Lacerda** — Python Backend Developer | APIs REST • Automação • Data Engineering
+
+[![GitHub](https://img.shields.io/badge/GitHub-LacerdaTraderCode-181717?logo=github&logoColor=white)](https://github.com/LacerdaTraderCode)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Wagner%20Lacerda-0077B5?logo=linkedin&logoColor=white)](https://linkedin.com/in/wagner-lacerda-da-silva-958b9481)
+[![YouTube](https://img.shields.io/badge/YouTube-LacerdaTraderCode-FF0000?logo=youtube&logoColor=white)](https://youtube.com/@LacerdaTraderCode)
+[![Telegram](https://img.shields.io/badge/Telegram-LacerdaTraderCode-26A5E4?logo=telegram&logoColor=white)](https://t.me/LacerdaTraderCode)
+[![Telegram Bots](https://img.shields.io/badge/Telegram-Bots-26A5E4?logo=telegram&logoColor=white)](https://t.me/LacerdaTraderCode_bots)
+
+📍 Rio Grande do Sul, Brasil
+
+</div>
 
 ---
 
 ## 📄 Licença
 
-MIT License
+Distribuído sob a licença MIT. Veja [LICENSE](LICENSE) para mais detalhes.
