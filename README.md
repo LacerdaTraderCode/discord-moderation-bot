@@ -2,65 +2,65 @@
 
 # 🤖 Discord Moderation Bot
 
-**Bot de moderação para servidores Discord com slash commands e warns persistentes**
+**A moderation bot for Discord servers with slash commands and persistent warnings**
 
 [![Python](https://img.shields.io/badge/Python-3.11%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
 [![discord.py](https://img.shields.io/badge/discord.py-5865F2?logo=discord&logoColor=white)](https://discordpy.readthedocs.io/)
 [![SQLite](https://img.shields.io/badge/SQLite-003B57?logo=sqlite&logoColor=white)](https://www.sqlite.org/)
-[![Licença](https://img.shields.io/badge/Licen%C3%A7a-MIT-orange)](https://github.com/LacerdaTraderCode/discord-moderation-bot/blob/main/LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-orange)](https://github.com/LacerdaTraderCode/discord-moderation-bot/blob/main/LICENSE)
 [![GitHub](https://img.shields.io/badge/GitHub-LacerdaTraderCode-181717?logo=github)](https://github.com/LacerdaTraderCode/discord-moderation-bot)
 
 </div>
 
 ---
 
-## 📌 Sobre o projeto
+## 📌 About the Project
 
-Bot de moderação para servidores Discord com **slash commands** modernos, sistema de warns persistente em SQLite, filtros de spam e comandos utilitários. Construído com `discord.py 2.x` e arquitetura totalmente assíncrona.
+A moderation bot for Discord servers with modern **slash commands**, a persistent warning system backed by SQLite, spam filters, and utility commands. Built with `discord.py 2.x` on a fully asynchronous architecture.
 
-### Funcionalidades
+### Features
 
-#### 🛡️ Moderação
-- ✅ `/kick` — Expulsa membro
-- ✅ `/ban` — Bane membro
-- ✅ `/warn` — Aplica advertência (persistente em banco)
-- ✅ `/warnings` — Lista advertências de um usuário
-- ✅ `/clear` — Limpa mensagens em massa
-- ✅ `/mute` — Silencia temporariamente
+#### 🛡️ Moderation
+- ✅ `/kick` — Kicks a member
+- ✅ `/ban` — Bans a member
+- ✅ `/warn` — Issues a warning (persisted in the database)
+- ✅ `/warnings` — Lists a user's warnings
+- ✅ `/clear` — Bulk-clears messages
+- ✅ `/mute` — Temporarily mutes a member
 
-#### 🔧 Utilitários
-- ✅ `/ping` — Latência do bot
-- ✅ `/userinfo` — Informações detalhadas de um usuário
-- ✅ `/serverinfo` — Estatísticas do servidor
-- ✅ `/avatar` — Mostra avatar em alta resolução
+#### 🔧 Utilities
+- ✅ `/ping` — Bot latency
+- ✅ `/userinfo` — Detailed info about a user
+- ✅ `/serverinfo` — Server statistics
+- ✅ `/avatar` — Shows avatar in high resolution
 
-#### 🎯 Automação
-- ✅ Auto-detecção de spam (mensagens repetidas)
-- ✅ Log automático em canal configurado
-- ✅ Mensagem de boas-vindas para novos membros
-
----
-
-## 🛠️ Tecnologias
-
-- **discord.py 2.x** — Framework oficial com suporte a slash commands
-- **SQLAlchemy** — Persistência de warns
-- **asyncio** — Arquitetura assíncrona nativa
-- **python-dotenv** — Configuração via variáveis de ambiente
+#### 🎯 Automation
+- ✅ Auto-detection of spam (repeated messages)
+- ✅ Automatic logging to a configured channel
+- ✅ Welcome message for new members
 
 ---
 
-## 📁 Estrutura
+## 🛠️ Technologies
+
+- **discord.py 2.x** — Official framework with slash command support
+- **SQLAlchemy** — Warning persistence
+- **asyncio** — Native asynchronous architecture
+- **python-dotenv** — Configuration via environment variables
+
+---
+
+## 📁 Structure
 
 ```
 discord-moderation-bot/
 ├── bot/
-│   ├── main.py              # Ponto de entrada
-│   ├── database.py          # Persistência de warns
+│   ├── main.py              # Entry point
+│   ├── database.py          # Warning persistence
 │   └── cogs/
-│       ├── moderation.py    # Comandos de moderação
-│       ├── utility.py       # Comandos utilitários
-│       └── events.py        # Handlers de eventos
+│       ├── moderation.py    # Moderation commands
+│       ├── utility.py       # Utility commands
+│       └── events.py        # Event handlers
 ├── requirements.txt
 ├── .env.example
 └── README.md
@@ -68,16 +68,16 @@ discord-moderation-bot/
 
 ---
 
-## 📦 Instalação
+## 📦 Installation
 
-### 1. Criar o bot no Discord Developer Portal
+### 1. Create the bot on the Discord Developer Portal
 
-1. Acesse [discord.com/developers/applications](https://discord.com/developers/applications)
-2. Crie nova aplicação → Bot → copie o **Token**
-3. Em **OAuth2 > URL Generator**: scopes `bot` + `applications.commands`, permissão `Administrator`
-4. Use a URL gerada para adicionar o bot ao servidor
+1. Go to [discord.com/developers/applications](https://discord.com/developers/applications)
+2. Create a new application → Bot → copy the **Token**
+3. Under **OAuth2 > URL Generator**: scopes `bot` + `applications.commands`, permission `Administrator`
+4. Use the generated URL to add the bot to your server
 
-### 2. Rodar localmente
+### 2. Run locally
 
 ```bash
 git clone https://github.com/LacerdaTraderCode/discord-moderation-bot.git
@@ -90,58 +90,58 @@ source venv/bin/activate      # Linux/Mac
 pip install -r requirements.txt
 
 cp .env.example .env
-# Edite .env e preencha DISCORD_TOKEN
+# Edit .env and fill in DISCORD_TOKEN
 
 python -m bot.main
 ```
 
 ---
 
-## 💬 Exemplos de uso
+## 💬 Usage Examples
 
 ```
-/warn @usuario Ofensa ao servidor
-→ ⚠️ @usuario advertido. Motivo: Ofensa ao servidor (warn #1)
+/warn @user Server violation
+→ ⚠️ @user warned. Reason: Server violation (warn #1)
 
-/warnings @usuario
-→ @usuario possui 1 advertência:
-  #1 - Ofensa ao servidor (há 2 minutos)
+/warnings @user
+→ @user has 1 warning:
+  #1 - Server violation (2 minutes ago)
 
 /clear 50
-→ 🗑️ 50 mensagens removidas.
+→ 🗑️ 50 messages removed.
 ```
 
 ---
 
-## 🔐 Permissões necessárias
+## 🔐 Required Permissions
 
-- Ler e enviar mensagens
-- Gerenciar mensagens (para `/clear`)
-- Expulsar e banir membros
-- Moderar membros (para `/mute`)
+- Read and send messages
+- Manage messages (for `/clear`)
+- Kick and ban members
+- Moderate members (for `/mute`)
 
 ---
 
-## 🚀 Deploy 24/7
+## 🚀 24/7 Deploy
 
-- **Railway** ou **Render** — planos gratuitos disponíveis
+- **Railway** or **Render** — free tiers available
 - **VPS** — DigitalOcean, Contabo, Linode
-- **Raspberry Pi** — ideal para uso pessoal
+- **Raspberry Pi** — ideal for personal use
 
 ---
 
-## ✅ Requisitos
+## ✅ Requirements
 
-- Python **3.11** ou superior
-- Token de bot do Discord
+- Python **3.11** or higher
+- Discord bot token
 
 ---
 
-## 👤 Autor
+## 👤 Author
 
 <div align="center">
 
-**Wagner Lacerda** — Python Backend Developer | APIs REST • Automação • Data Engineering
+**Wagner Lacerda** — Senior Software Engineer | Python, Backend, AI Apps, Automation & Systems
 
 [![GitHub](https://img.shields.io/badge/GitHub-LacerdaTraderCode-181717?logo=github&logoColor=white)](https://github.com/LacerdaTraderCode)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Wagner%20Lacerda-0077B5?logo=linkedin&logoColor=white)](https://linkedin.com/in/wagner-lacerda-da-silva-958b9481)
@@ -149,12 +149,12 @@ python -m bot.main
 [![Telegram](https://img.shields.io/badge/Telegram-LacerdaTraderCode-26A5E4?logo=telegram&logoColor=white)](https://t.me/LacerdaTraderCode)
 [![Telegram Bots](https://img.shields.io/badge/Telegram-Bots-26A5E4?logo=telegram&logoColor=white)](https://t.me/LacerdaTraderCode_bots)
 
-📍 Rio Grande do Sul, Brasil
+📍 Rio Grande do Sul, Brazil
 
 </div>
 
 ---
 
-## 📄 Licença
+## 📄 License
 
-Distribuído sob a licença MIT. Veja [LICENSE](LICENSE) para mais detalhes.
+Distributed under the MIT license. See [LICENSE](LICENSE) for more details.
