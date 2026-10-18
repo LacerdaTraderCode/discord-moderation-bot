@@ -43,7 +43,7 @@ class ModerationBot(commands.Bot):
             try:
                 await self.load_extension(f"bot.cogs.{cog}")
                 logger.info(f"Cog carregado: {cog}")
-            except Exception as e:
+            except commands.ExtensionError as e:
                 logger.error(f"Erro carregando {cog}: {e}")
 
         # Sincronizar slash commands
