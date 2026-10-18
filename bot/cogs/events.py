@@ -1,10 +1,9 @@
 """
 Cog Events - handlers de eventos (welcome, anti-spam).
 """
-import os
 import logging
 from collections import defaultdict, deque
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 import discord
 from discord.ext import commands
