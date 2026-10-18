@@ -4,6 +4,7 @@
 
 **A moderation bot for Discord servers with slash commands and persistent warnings**
 
+[![CI](https://github.com/LacerdaTraderCode/discord-moderation-bot/actions/workflows/ci.yml/badge.svg)](https://github.com/LacerdaTraderCode/discord-moderation-bot/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/Python-3.11%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
 [![discord.py](https://img.shields.io/badge/discord.py-5865F2?logo=discord&logoColor=white)](https://discordpy.readthedocs.io/)
 [![SQLite](https://img.shields.io/badge/SQLite-003B57?logo=sqlite&logoColor=white)](https://www.sqlite.org/)
