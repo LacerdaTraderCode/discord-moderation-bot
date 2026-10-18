@@ -138,6 +138,19 @@ python -m bot.main
 
 ---
 
+## 🧪 Development
+
+```bash
+pip install -r requirements-dev.txt
+
+ruff check .    # lint
+pytest -v       # tests (no Discord connection needed)
+```
+
+The tests use mocks and an in-memory SQLite database. The same checks run in CI on every pull request.
+
+---
+
 ## 👤 Author
 
 <div align="center">
