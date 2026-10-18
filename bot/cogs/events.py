@@ -56,7 +56,7 @@ class Events(commands.Cog):
             return
 
         key = (message.guild.id, message.author.id)
-        now = datetime.now()
+        now = datetime.now(timezone.utc)
 
         # Adiciona mensagem atual ao histórico
         self.user_messages[key].append((now, message.content))
