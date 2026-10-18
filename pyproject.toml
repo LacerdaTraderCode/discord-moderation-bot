@@ -1,0 +1,10 @@
+[tool.ruff]
+line-length = 100
+exclude = [".venv", "venv"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "DTZ", "BLE"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

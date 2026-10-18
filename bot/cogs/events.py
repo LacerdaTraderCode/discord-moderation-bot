@@ -1,10 +1,9 @@
 """
 Cog Events - handlers de eventos (welcome, anti-spam).
 """
-import os
 import logging
 from collections import defaultdict, deque
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 import discord
 from discord.ext import commands
@@ -57,7 +56,7 @@ class Events(commands.Cog):
             return
 
         key = (message.guild.id, message.author.id)
-        now = datetime.now()
+        now = datetime.now(timezone.utc)
 
         # Adiciona mensagem atual ao histórico
         self.user_messages[key].append((now, message.content))
