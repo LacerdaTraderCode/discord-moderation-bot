@@ -1,7 +1,7 @@
 """
 Persistência de warns em SQLite.
 """
-from sqlalchemy import create_engine, Column, Integer, BigInteger, String, DateTime
+from sqlalchemy import BigInteger, Column, DateTime, Integer, String, create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 from sqlalchemy.sql import func
 
